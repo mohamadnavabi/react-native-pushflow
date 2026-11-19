@@ -2,12 +2,12 @@
   "compilerOptions": {
     "rootDir": ".",
     "paths": {
-      "react-native-pushflow2": ["./src/index"]
+      "react-native-pushflow": ["./src/index"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
     "customConditions": [
-      "react-native-pushflow2-source",
+      "react-native-pushflow-source",
       "react-native-strict-api"
     ],
     "esModuleInterop": true,

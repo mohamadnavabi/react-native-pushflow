@@ -100,6 +100,14 @@ To publish new versions, run the following:
 yarn release
 ```
 
+release-it also writes the new version to `src/version.ts`, which the SDK reports in events and installations.
+
+### Layout
+
+- `src/`: the SDK. `src/index.ts` is the public API.
+- `src/core/`: the platform-agnostic core (identity, persistent batching queue, retries, in-app message helpers). It is a copy of `sdk/core` in the PushFlow monorepo, which the web SDK (npm: `pushflow`) is built from: a change to one belongs in the other too. Its tests are in `src/__tests__/core/`.
+- `src/__tests__/`: Jest tests. They run the SDK against the fakes in `src/__fixtures__/` (runtime, push library and backend), so no simulator or native build is needed.
+
 
 ### Scripts
 

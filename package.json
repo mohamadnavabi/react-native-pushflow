@@ -1,12 +1,13 @@
 {
-  "name": "react-native-pushflow2",
-  "version": "0.1.0",
-  "description": "pushflow react native package",
+  "name": "react-native-pushflow",
+  "version": "0.2.0",
+  "description": "PushFlow SDK for React Native apps: events, screens, identity, app lifecycle, push notifications (FCM and APNs) and in-app messages",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
+  "sideEffects": false,
   "exports": {
     ".": {
-      "react-native-pushflow2-source": "./src/index.tsx",
+      "react-native-pushflow-source": "./src/index.ts",
       "types": "./lib/typescript/src/index.d.ts",
       "default": "./lib/module/index.js"
     },
@@ -32,7 +33,7 @@
     "!**/.*"
   ],
   "scripts": {
-    "example": "yarn workspace react-native-pushflow2-example",
+    "example": "yarn workspace react-native-pushflow-example",
     "clean": "del-cli lib",
     "prepare": "bob build",
     "typecheck": "tsc",
@@ -42,19 +43,24 @@
   },
   "keywords": [
     "react-native",
-    "ios",
-    "android"
+    "expo",
+    "pushflow",
+    "push-notifications",
+    "fcm",
+    "apns",
+    "analytics",
+    "in-app-messaging"
   ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mohamadnavabi/react-native-pushflow.git"
   },
-  "author": "Mohammad Navabi <navabifar@gmail.com> (https://github.com/mohamadnavabi)",
+  "author": "PushFlow (https://pushflow.ir)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mohamadnavabi/react-native-pushflow/issues"
+    "url": "https://pushflow.ir/contact/"
   },
-  "homepage": "https://github.com/mohamadnavabi/react-native-pushflow#readme",
+  "homepage": "https://pushflow.ir/docs/react-native/",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
@@ -86,8 +92,8 @@
     "typescript": "^6.0.3"
   },
   "peerDependencies": {
-    "react": "*",
-    "react-native": "*"
+    "react": ">=18.2.0",
+    "react-native": ">=0.74.0"
   },
   "workspaces": [
     "example"
@@ -124,7 +130,7 @@
       "customExportConditions": [
         "require",
         "react-native",
-        "react-native-pushflow2-source"
+        "react-native-pushflow-source"
       ]
     },
     "modulePathIgnorePatterns": [
@@ -159,6 +165,9 @@
           "name": "angular"
         }
       }
+    },
+    "hooks": {
+      "after:bump": "echo \"export const SDK_VERSION = '${version}';\" > src/version.ts"
     }
   },
   "create-react-native-library": {

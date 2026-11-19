@@ -21,9 +21,20 @@ export default defineConfig([
     rules: {
       'react/react-in-jsx-scope': 'off',
       'prettier/prettier': 'error',
+      'no-void': 'off',
+      'no-bitwise': 'off',
     },
   },
   {
-    ignores: ['node_modules/', 'lib/', 'example/dist/'],
+    files: ['**/*.{ts,tsx}'],
+    rules: {
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
+      ],
+    },
+  },
+  {
+    ignores: ['node_modules/', 'lib/', 'coverage/', 'example/dist/'],
   },
 ]);
